@@ -1,15 +1,17 @@
 # Progreso
 
 ## Trabajo actual: GHP-SITIO-1 Sitio Astro + workflow de GitHub Pages  (rama tarea/ghp-sitio-1)
-- Etapas: [x] 1 base del proyecto Astro (commit 00c246b) · [x] 2 páginas, identidad y SEO (commit b5f080d) · [x] 3 workflow de GitHub Pages (commit de esta etapa; espera auditoría) · [ ] 4 documentación
-- Ciclo: etapas aprobadas 2, auditoría pendiente, rondas 0
+- Etapas: [x] 1 base del proyecto Astro (commit 00c246b) · [x] 2 páginas, identidad y SEO (commit b5f080d) · [x] 3 workflow de GitHub Pages (commit ce98a9c) · [x] 4 documentación y correcciones de auditoría (commit de esta etapa)
+- Ciclo: etapas aprobadas 3, auditoría pendiente (de cierre), rondas 0
 - Línea base de pruebas: no hay pruebas automáticas. Verificación = `npm run check`, `npm run build` y revisión manual con evidencia. Al empezar (main = origin/main = adc2a84) no había código del sitio.
 - Estado del repo: remoto `origin` = https://github.com/mrKanoh/mrKanoh.github.io (público); PR 1 (`tarea/base-inicial`) fusionado en `main` (adc2a84). Etiqueta local `antes-de-ghp-sitio-1` sobre adc2a84. `tarea/base-minima` sigue local como respaldo.
+- Estado de Pages (auditoría etapa 3, 2026-10-27): ya publica `main` con Jekyll («Deploy from a branch», `/`; API `build_type` legacy). Decisión de Ariel (opción A): no se toca GitHub ahora.
 - Pendiente / bloqueos:
-  - Ariel: activar Pages con fuente «GitHub Actions» antes de fusionar GHP-SITIO-1.
+  - Ariel: cambiar la fuente de Pages a «GitHub Actions» antes de fusionar (si no, doble despliegue con Jekyll).
   - Ariel: qué repos se muestran (`src/data/repos.ts` vacío; la portada muestra el marcador «[POR DECIDIR]» y no se publica así).
-  - Ariel: aprobar los textos nuevos de la portada (frase de presentación y meta descripción), marcados como suposición en el informe de la etapa 2.
-  - Etapa 4: normalizar a «@» las «＠» de ancho completo de la orden copiada abajo (observación del orquestador).
+  - Ariel: aprobar los textos nuevos de la portada (frase de presentación y meta descripción); los consulta el orquestador al cierre.
+  - Orquestador: auditoría de cierre (build limpio, lychee, gitleaks, npm audit, Lighthouse); push y PR solo por su orden.
+  - Bajos de la auditoría, no se corrigen: el job build hereda los permisos top-level (`pages: write`, `id-token: write`); las acciones van fijadas por major y no por SHA.
 
 ### Orden completa
 ```
@@ -25,17 +27,17 @@ Objetivo
 Sitio Astro estático en español para https://mrkanoh.github.io, con identidad visual AMR, que compila sin errores y se publica con un workflow de GitHub Actions hacia GitHub Pages cuando Ariel fusione a main y active Pages. Alcance según docs/PRD.md.
 
 Contexto (verificado por el orquestador el 2026-10-27)
-- Astro vigente: 7.4.2 (npm view astro version); requiere node >=22.23.4 (engines). ＠astrojs/check 0.9.12, typescript 6.0.x (peer ^5 || ^6). Node local v24.4.1, npm 11.4.2.
+- Astro vigente: 7.4.2 (npm view astro version); requiere node >=22.23.4 (engines). @astrojs/check 0.9.12, typescript 6.0.x (peer ^5 || ^6). Node local v24.4.1, npm 11.4.2.
 - Guía oficial de Astro para GitHub Pages: https://docs.astro.build/en/guides/deploy/github/ — sitio de usuario: `site: 'https://mrkanoh.github.io'` y SIN `base` (el repo se llama <user>.github.io). Permisos contents: read, pages: write, id-token: write; job deploy con environment github-pages y url desde la salida del paso. Commitear el lockfile. Node 24 por defecto en su acción.
-- Doc oficial de GitHub, flujos personalizados: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages — el deploy necesita al menos pages: write e id-token: write; environment github-pages; `needs: build`; artefacto sin enlaces simbólicos ni duros. Sus ejemplos muestran versiones atrasadas (configure-pages＠v5, upload-pages-artifact＠v4, deploy-pages＠v4).
-- Versiones vigentes según `gh release view` (2026-10-27): actions/checkout v7.0.1, actions/setup-node v7.1.0, actions/configure-pages v6.0.0, actions/upload-pages-artifact v5.0.0, actions/deploy-pages v5.0.1. Usa esos majors (＠v7, ＠v7, ＠v6, ＠v5, ＠v5). Si al implementar ves otra versión major vigente, detente y repórtalo.
+- Doc oficial de GitHub, flujos personalizados: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages — el deploy necesita al menos pages: write e id-token: write; environment github-pages; `needs: build`; artefacto sin enlaces simbólicos ni duros. Sus ejemplos muestran versiones atrasadas (configure-pages@v5, upload-pages-artifact@v4, deploy-pages@v4).
+- Versiones vigentes según `gh release view` (2026-10-27): actions/checkout v7.0.1, actions/setup-node v7.1.0, actions/configure-pages v6.0.0, actions/upload-pages-artifact v5.0.0, actions/deploy-pages v5.0.1. Usa esos majors (@v7, @v7, @v6, @v5, @v5). Si al implementar ves otra versión major vigente, detente y repórtalo.
 - Referencia de diseño, SOLO LECTURA: D:\Proyectos\portafolio-v2\tmp\release-repository — src/styles/tokens.css, src/styles/global.css, src/layouts/BaseLayout.astro, src/components (Header, SiteFooter, ProjectCard…), src/data/site.ts (nombre «Ariel Mesina Ramírez», cargo «Full Stack Developer con foco en Frontend», GitHub y LinkedIn reales), public/share/*.png, src/pages/robots.txt.ts y sitemap.xml.ts.
 - LESSONS.md: (1) permisos con ask sobre prefijos, no deny por flag; (2) verifica .gitignore con barra final: `git check-ignore -v --no-index node_modules/ dist/ .astro/`.
 - PROGRESS.md y AGENTS.md están desactualizados (dicen que el PR 1 está pendiente y que el remoto no existe). Corrígelo en la etapa 1.
 
 Alcance
 - Incluye: package.json + lockfile, astro.config, tokens y estilos AMR mínimos copiados/adaptados, layout base con SEO (título, descripción ≤160, canónica, Open Graph con imagen 1200×630, JSON-LD mínimo opcional), portada (presentación breve, lista de proyectos de código, enlaces a https://elari.work, al CV en https://elari.work/cv/ y a https://github.com/mrKanoh), 404 propia (noindex, sin datos internos), robots.txt y sitemap.xml, workflow deploy.yml, documentación (README, AGENTS, DECISIONS, PROGRESS).
-- No incluye: casos UX/UI de elari.work (solo se enlazan), copiar el PDF del CV, backend, formularios, medición, dominio, CNAME, inglés, correo hola＠elari.work, componentes que no se usen.
+- No incluye: casos UX/UI de elari.work (solo se enlazan), copiar el PDF del CV, backend, formularios, medición, dominio, CNAME, inglés, correo hola@elari.work, componentes que no se usen.
 
 Antes de empezar (preflight)
 1. Lee AGENTS.md, README.md, docs/PRD.md, DECISIONS.md, PROGRESS.md y LESSONS.md.
@@ -47,7 +49,7 @@ Tarea (al cerrar cada etapa: verifica, commit, actualiza PROGRESS.md, DETENTE e 
 Etapa 1 — Base del proyecto Astro
 - Etiqueta `antes-de-ghp-sitio-1` en main y rama `tarea/ghp-sitio-1` desde main.
 - Línea base: no hay pruebas; regístralo en PROGRESS.md (verificación = check, build, revisión manual con evidencia). Corrige lo desactualizado de PROGRESS.md y AGENTS.md (PR 1 fusionado; remoto existe).
-- package.json a mano (sin `npm create astro`): "private": true, "type": "module", engines.node ">=22.23.4", scripts dev/check/build/preview (`astro check`, `astro build`…). Dependencias fijadas en versión exacta: astro 7.4.2, ＠astrojs/check 0.9.12, typescript 6.0.x, y las ＠fontsource que de verdad uses. Sin otras integraciones salvo que las justifiques (sitemap: prefiere un endpoint propio como la referencia). Genera package-lock.json (npm install pedirá aprobación a Ariel en tu chat; es esperable).
+- package.json a mano (sin `npm create astro`): "private": true, "type": "module", engines.node ">=22.23.4", scripts dev/check/build/preview (`astro check`, `astro build`…). Dependencias fijadas en versión exacta: astro 7.4.2, @astrojs/check 0.9.12, typescript 6.0.x, y las @fontsource que de verdad uses. Sin otras integraciones salvo que las justifiques (sitemap: prefiere un endpoint propio como la referencia). Genera package-lock.json (npm install pedirá aprobación a Ariel en tu chat; es esperable).
 - astro.config.mjs: `site: 'https://mrkanoh.github.io'`, output static, sin base. tsconfig que extienda el de Astro.
 - Verifica: `npm run check`, `npm run build`, `git check-ignore -v --no-index node_modules/ dist/ .astro/`, `git diff --check`. Actualiza la sección Verificación de AGENTS.md con los comandos reales.
 
@@ -63,8 +65,8 @@ Etapa 2 — Páginas, identidad y SEO
 
 Etapa 3 — Workflow de GitHub Pages (etapa de riesgo: habrá auditoría)
 - `.github/workflows/deploy.yml`: name «Deploy to GitHub Pages»; on push a main + workflow_dispatch; permissions top-level contents: read, pages: write, id-token: write; concurrency group "pages", cancel-in-progress: false.
-- Job build (ubuntu-latest): actions/checkout＠v7 → actions/setup-node＠v7 con node-version 24 y cache npm → `npm ci` → actions/configure-pages＠v6 (SIN `enablement`: activar Pages es decisión de Ariel) → `npm run build` → actions/upload-pages-artifact＠v5 con path ./dist.
-- Job deploy: needs build, environment name github-pages y url `${{ steps.deployment.outputs.page_url }}`, actions/deploy-pages＠v5 con id deployment.
+- Job build (ubuntu-latest): actions/checkout@v7 → actions/setup-node@v7 con node-version 24 y cache npm → `npm ci` → actions/configure-pages@v6 (SIN `enablement`: activar Pages es decisión de Ariel) → `npm run build` → actions/upload-pages-artifact@v5 con path ./dist.
+- Job deploy: needs build, environment name github-pages y url `${{ steps.deployment.outputs.page_url }}`, actions/deploy-pages@v5 con id deployment.
 - Comentario breve al inicio del archivo: fusionar o hacer push a main publica en producción; requiere que Ariel haya elegido «GitHub Actions» en Settings → Pages.
 - Verifica: `actionlint` (si no está instalado, dilo), YAML válido, `git diff --check`. No lo ejecutes en GitHub.
 

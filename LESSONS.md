@@ -11,3 +11,9 @@
 - **Qué pasó:** en GHP-BASE-1 etapa 1, `git check-ignore .env node_modules dist` solo reportó `.env`, y pareció que faltaban reglas.
 - **Causa:** los patrones con barra final (`node_modules/`, `dist/`, `.astro/`) solo coinciden con directorios, y esas rutas aún no existían.
 - **Prevención:** verificar con `git check-ignore -v --no-index node_modules/ dist/ .astro/` (con la barra) o con un archivo hijo (`dist/index.html`).
+
+## 2026-10-27 — Orden basada en un estado de Pages que no se verificó
+
+- **Qué pasó:** la orden GHP-SITIO-1 asumió que Pages no estaba activado, sin verificarlo. GitHub ya publicaba `main` con Jekyll («Deploy from a branch», `/`), incluidos README, PROGRESS, AGENTS y docs/PRD. Fusionar sin cambiar la fuente habría dejado dos despliegues compitiendo. Lo detectó la auditoría de la etapa 3.
+- **Causa:** el orquestador tomó el estado de una plataforma externa del texto de la solicitud, sin consultarlo.
+- **Prevención:** antes de redactar una orden que dependa de una plataforma, consultar su estado real y citarlo en la orden. Para Pages: `gh api repos/<owner>/<repo>/pages` (solo lectura; `build_type` dice `legacy` o `workflow`).

@@ -1,6 +1,8 @@
 # Publica el sitio en GitHub Pages (https://mrkanoh.github.io).
 # Fusionar o hacer push a main PUBLICA EN PRODUCCIÓN.
-# Requiere que Ariel haya elegido «GitHub Actions» en Settings → Pages; si no, el deploy falla.
+# Requiere que la fuente de Pages sea «GitHub Actions» (Settings → Pages → Source); hoy es
+# «Deploy from a branch» (Jekyll). Si no se cambia antes de fusionar, cada push a main dispara
+# dos despliegues que compiten: el de Jekyll y este.
 name: Deploy to GitHub Pages
 
 on:
