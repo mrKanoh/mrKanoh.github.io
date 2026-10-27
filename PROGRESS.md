@@ -1,8 +1,8 @@
 # Progreso
 
 ## Trabajo actual: GHP-SITIO-1 Sitio Astro + workflow de GitHub Pages  (rama tarea/ghp-sitio-1)
-- Etapas: [x] 1 base del proyecto Astro (commit 00c246b) · [x] 2 páginas, identidad y SEO (commit de esta etapa) · [ ] 3 workflow de GitHub Pages · [ ] 4 documentación
-- Ciclo: etapas aprobadas 1, auditoría pendiente, rondas 0
+- Etapas: [x] 1 base del proyecto Astro (commit 00c246b) · [x] 2 páginas, identidad y SEO (commit b5f080d) · [x] 3 workflow de GitHub Pages (commit de esta etapa; espera auditoría) · [ ] 4 documentación
+- Ciclo: etapas aprobadas 2, auditoría pendiente, rondas 0
 - Línea base de pruebas: no hay pruebas automáticas. Verificación = `npm run check`, `npm run build` y revisión manual con evidencia. Al empezar (main = origin/main = adc2a84) no había código del sitio.
 - Estado del repo: remoto `origin` = https://github.com/mrKanoh/mrKanoh.github.io (público); PR 1 (`tarea/base-inicial`) fusionado en `main` (adc2a84). Etiqueta local `antes-de-ghp-sitio-1` sobre adc2a84. `tarea/base-minima` sigue local como respaldo.
 - Pendiente / bloqueos:
