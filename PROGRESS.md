@@ -1,16 +1,17 @@
 # Progreso
 
 ## Trabajo actual: ninguno
-- Línea base de pruebas: no hay pruebas; verificación manual.
-- Remoto `origin` = https://github.com/mrKanoh/mrKanoh.github.io.git; `main` remota = f5e5e53 «init» (subida por Ariel).
-- `tarea/base-minima` queda local como respaldo, sin borrar.
-- Pendientes:
-  - Ariel: fusionar el PR de `tarea/base-inicial` hacia `main`.
-  - Ariel: activar Pages con fuente «GitHub Actions», al cerrar GHP-SITIO-1.
-  - GHP-SITIO-1: Astro + workflow de GitHub Pages.
+- Línea base de pruebas: no hay pruebas automáticas; verificación = `npm run check`, `npm run build` y revisión manual con evidencia.
+- Rama `tarea/ghp-sitio-1`: revisada por el orquestador y en dos pasadas por el auditor; subida y con el PR 2 abierto hacia `main`. Fusionar es decisión de Ariel. Etiqueta local `antes-de-ghp-sitio-1` sobre adc2a84. `tarea/base-minima` sigue local como respaldo.
+- Pendientes de Ariel (detalle en [docs/PUBLICACION-CHECKLIST.md](docs/PUBLICACION-CHECKLIST.md)):
+  - Cambiar Settings → Pages → Source de «Deploy from a branch» a «GitHub Actions» antes de fusionar (con «Deploy from a branch», GitHub no documenta qué pasa con el workflow: puede fallar o convivir con el build de Jekyll).
+  - Google Search Console: verificar la propiedad y enviar el sitemap.
+  - Tras la fusión: actualizar README «Estado» y AGENTS «Publicación», que describen el estado al 2026-10-27.
+- Bajos de la auditoría, no se corrigen: el job build hereda los permisos top-level (`pages: write`, `id-token: write`); las acciones van fijadas por major y no por SHA.
 
 ## Terminados
-- 2026-10-27 GHP-BASE-1 cierre — LESSONS.md (regla de deny `gh api * -X *`; `check-ignore` con patrones de directorio), push de `tarea/base-inicial` y PR abierto hacia `main` · Ciclo: etapas aprobadas 4, auditoría hecha, rondas 0 · commit de esta etapa · pendiente: fusionar el PR (Ariel)
+- 2026-10-27 GHP-SITIO-1 — sitio Astro 7.4.2 (portada, 404, robots.txt, sitemap.xml, SEO, identidad AMR), workflow `deploy.yml` hacia GitHub Pages, documentación, correcciones de auditoría, `docs/PUBLICACION-CHECKLIST.md` el repo decidido por Ariel (`wcag-accessibility-audit-skill`) y los textos de portada aprobados por Ariel, en `tarea/ghp-sitio-1`; PR 2 abierto (https://github.com/mrKanoh/mrKanoh.github.io/pull/2) · Ciclo: etapas aprobadas 6, auditoría hecha, rondas 1 · commits 00c246b, b5f080d, ce98a9c, 817824d, c700317, d7960f2, 8ff0695, de4be6d, 80f1567 (textos aprobados) y el de la decisión sin medición · revisión del orquestador y del auditor: hecha · pendiente: fusión (Ariel) y los pendientes de Ariel de arriba
+- 2026-10-27 GHP-BASE-1 cierre — LESSONS.md (regla de deny `gh api * -X *`; `check-ignore` con patrones de directorio), push de `tarea/base-inicial` y PR 1 hacia `main`, fusionado por Ariel (adc2a84) · Ciclo: etapas aprobadas 4, auditoría hecha, rondas 0 · commit 62d3a9e · pendiente: nada
 - 2026-10-27 GHP-BASE-1 etapa 4 (autorizada por Ariel) — remoto origin, `main` local con commit vacío «init» (f5e5e53), `tarea/base-inicial` con los commits de las etapas 1–3 copiados (67ba5ac, 84076ad, 4af10f3; diff vacío contra tarea/base-minima) · Ciclo: etapas aprobadas 3, auditoría hecha, rondas 1 · commit f6cf42d · pendiente: push de main (Ariel), push de la rama y PR
 - 2026-10-27 GHP-BASE-1 etapa 3 (corrección de auditoría, autorizada por Ariel) — `gh api * -X *` sale de deny (no bloqueaba `-X` antes de la ruta, `--method` ni POST implícitos) y `gh api *` pasa a ask, en Bash y PowerShell · Ciclo: etapas aprobadas 2, auditoría hecha, rondas 1 · commit de esta etapa · pendiente: revisión del orquestador
 - 2026-10-27 GHP-BASE-1 — base mínima local (PRD, README, AGENTS, CLAUDE, .gitignore, DECISIONS, PROGRESS y .claude/settings.json, autorizado por Ariel) en la rama tarea/base-minima · commits fafb12b, d6aa1a7 · pendiente: revisión del orquestador; repo remoto y Pages (Ariel); GHP-SITIO-1

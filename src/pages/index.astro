@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import RepoCard from '../components/RepoCard.astro';
+import { links, person } from '../data/site';
+import { repos } from '../data/repos';
+
+const title = `${person.name} | ${person.jobTitle}`;
+const description =
+  'Proyectos de código de Ariel Mesina Ramírez, Full Stack Developer con foco en Frontend. Portafolio UX/UI y CV en elari.work.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="amr-wrap intro" aria-labelledby="titulo">
+    <p class="amr-label">Proyectos de código</p>
+    <h1 class="intro__title" id="titulo">{person.name}</h1>
+    <p class="intro__role">{person.jobTitle}</p>
+    <p class="intro__text">
+      Aquí están mis proyectos de código en GitHub. Los casos UX/UI y el CV están en <a href={links.portfolio}>elari.work</a>.
+    </p>
+    <ul class="intro__actions">
+      <li><a class="button button--primary" href={links.portfolio}>Portafolio en elari.work <span aria-hidden="true">↗</span></a></li>
+      <li><a class="button" href={links.cv}>CV <span aria-hidden="true">↗</span></a></li>
+      <li><a class="button" href={links.github}>GitHub <span aria-hidden="true">↗</span></a></li>
+    </ul>
+  </section>
+
+  <section class="amr-wrap repos" aria-labelledby="repos-titulo">
+    <h2 class="repos__title" id="repos-titulo">Repositorios</h2>
+    {
+      repos.length > 0 ? (
+        <ul class="repos__list">
+          {repos.map((repo) => (
+            <li>
+              <RepoCard repo={repo} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        // [POR DECIDIR] Ariel decide qué repos se muestran (src/data/repos.ts). No se publica con este marcador.
+        <p class="repos__pending">[POR DECIDIR] Lista de repositorios pendiente de Ariel</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--amr-space-16);
+    padding-block: var(--amr-space-48) var(--amr-space-48);
+  }
+  .intro__title {
+    font: 500 36px/44px var(--amr-font-body);
+    overflow-wrap: anywhere;
+  }
+  .intro__role { font: 400 20px/28px var(--amr-font-body); }
+  .intro__text { max-width: 40em; color: var(--amr-color-muted); }
+  .intro__text a { color: var(--amr-color-window-text); text-underline-offset: 3px; }
+
+  .intro__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--amr-space-12);
+    margin: var(--amr-space-8) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--amr-space-8);
+    width: 100%;
+    min-height: var(--amr-size-touch);
+    padding: 0 var(--amr-space-24);
+    border: 1px solid var(--amr-color-ink);
+    border-radius: var(--amr-radius-4);
+    font: 500 14px/20px var(--amr-font-body);
+    text-decoration: none;
+  }
+  .button:hover { background: var(--amr-color-metal); }
+  .button:hover span { color: inherit; }
+  .button span { color: var(--amr-color-accent-text); }
+  .button--primary {
+    background: var(--amr-color-ink);
+    color: var(--amr-color-on-ink);
+  }
+  .button--primary:hover { background: var(--amr-color-muted); }
+  .button--primary span { color: inherit; }
+
+  .repos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--amr-space-24);
+    padding-block: var(--amr-space-32) var(--amr-space-64);
+    border-top: 1px solid var(--amr-color-metal);
+  }
+  .repos__title { font: 500 28px/36px var(--amr-font-body); }
+  .repos__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--amr-space-16);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .repos__pending {
+    padding: var(--amr-space-24);
+    border: 2px dashed var(--amr-color-accent-text);
+    color: var(--amr-color-accent-text);
+    font: 400 14px/20px var(--amr-font-mono);
+  }
+
+  @media (min-width: 640px) {
+    .intro__actions { flex-direction: row; flex-wrap: wrap; }
+    .button { width: auto; }
+    .repos__list { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .intro { padding-block: var(--amr-space-64); }
+    .intro__title { font-size: 56px; line-height: 64px; }
+  }
+</style>

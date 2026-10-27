@@ -1,0 +1,47 @@
+/* Tokens AMR: subconjunto de los de elari.work (portafolio-v2, src/styles/tokens.css), solo lo que usa este sitio. */
+:root {
+  /* Paleta base */
+  --amr-palette-ivory: #f1ece8;
+  --amr-palette-coal: #242625;
+  --amr-palette-orange: #d9430e;
+  --amr-palette-orange-text: #b9370a;
+  --amr-palette-metal: #c7c6c2;
+  --amr-palette-muted: #615d59;
+  --amr-palette-window: #2563eb;
+  /* Variante para texto: el azul #2563eb (4,41:1) no llega a 4,5:1 sobre el marfil. */
+  --amr-palette-window-text: #1d4ed8;
+
+  /* Semánticos */
+  --amr-color-surface: var(--amr-palette-ivory);
+  --amr-color-ink: var(--amr-palette-coal);
+  --amr-color-accent: var(--amr-palette-orange); /* solo decorativo: 3,76:1 sobre marfil */
+  --amr-color-accent-text: var(--amr-palette-orange-text); /* 4,95:1 sobre marfil */
+  --amr-color-window: var(--amr-palette-window);
+  --amr-color-window-text: var(--amr-palette-window-text); /* 5,71:1 sobre marfil */
+  --amr-color-muted: var(--amr-palette-muted);
+  --amr-color-metal: var(--amr-palette-metal);
+  --amr-color-on-ink: var(--amr-palette-ivory);
+
+  /* Espacios */
+  --amr-space-8: 8px;
+  --amr-space-12: 12px;
+  --amr-space-16: 16px;
+  --amr-space-24: 24px;
+  --amr-space-32: 32px;
+  --amr-space-48: 48px;
+  --amr-space-64: 64px;
+
+  /* Bordes y tamaños */
+  --amr-radius-4: 4px;
+  --amr-size-touch: 48px;
+  --amr-page-max: 1040px;
+  --amr-gutter: var(--amr-space-16);
+
+  /* Tipografía */
+  --amr-font-body: 'Inter', system-ui, sans-serif;
+  --amr-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+@media (min-width: 900px) {
+  :root { --amr-gutter: 40px; }
+}

@@ -1,0 +1,34 @@
+---
+import type { Repo } from '../data/repos';
+
+interface Props {
+  repo: Repo;
+}
+const { repo } = Astro.props;
+---
+
+<article class="repo">
+  <h3 class="repo__name">
+    <a href={repo.url}>{repo.name}<span class="repo__arrow" aria-hidden="true"> ↗</span></a>
+  </h3>
+  <p class="repo__text">{repo.description}</p>
+  {repo.language && <p class="amr-label repo__lang">{repo.language}</p>}
+</article>
+
+<style>
+  .repo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--amr-space-8);
+    height: 100%;
+    padding: var(--amr-space-24);
+    border: 1px solid var(--amr-color-metal);
+    border-radius: var(--amr-radius-4);
+  }
+  .repo__name { font: 500 20px/28px var(--amr-font-body); overflow-wrap: anywhere; }
+  .repo__name a { text-decoration: underline; text-underline-offset: 3px; }
+  .repo__name a:hover { color: var(--amr-color-window-text); }
+  .repo__arrow { color: var(--amr-color-accent-text); }
+  .repo__text { color: var(--amr-color-muted); }
+  .repo__lang { margin-top: auto; }
+</style>
