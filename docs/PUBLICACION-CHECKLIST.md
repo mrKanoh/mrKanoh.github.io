@@ -13,7 +13,13 @@ Marcas: ✅ cumple · ⚠️ parcial · ❌ falta · — no aplica · ? no verif
   2. Aprobar los dos textos nuevos de la portada: la frase «Aquí están mis proyectos de código en GitHub. Los casos UX/UI y el CV están en elari.work.» y la meta descripción «Proyectos de código de Ariel Mesina Ramírez, Full Stack Developer con foco en Frontend. Portafolio UX/UI y CV en elari.work.».
 - **Antes de fusionar (Ariel):** cambiar Settings → Pages → Source de «Deploy from a branch» a «GitHub Actions» (ver [README](../README.md), «Cómo se publica»).
 
-Evidencia `O`: resultados que corrió el orquestador sobre 817824d el 2026-10-27, tras `rm -rf dist .astro` y `npm ci`.
+Evidencia `O`: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27:
+- `npm run check`: 0 errores, 0 warnings, 0 hints.
+- `npm run build` desde `dist` limpio: 2 páginas; `dist/index.html` con la tarjeta del repo y 0 «POR DECIDIR».
+- `lychee` en línea con `--root-dir`: 38 OK y 1 error esperado (`https://mrkanoh.github.io/sitemap.xml` da 404 porque el sitio Astro aún no está publicado; `dist/sitemap.xml` existe).
+- `gitleaks` sobre main..8ff0695: 7 commits, no leaks.
+- `npm audit`: 0 vulnerabilities (sobre 817824d; sin cambios de dependencias desde entonces).
+- `actionlint`: OK.
 
 ## 1. Dominio y publicación
 | # | Control | Nivel | Quién | Marca | Evidencia |
@@ -42,7 +48,7 @@ Evidencia `O`: resultados que corrió el orquestador sobre 817824d el 2026-10-27
 ## 3. Medición
 | # | Control | Nivel | Quién | Marca | Evidencia |
 |---|---|---|---|---|---|
-| 17 | Decidir si el sitio mide visitas y con qué | Mínimo | A | ❌ | Pendiente de Ariel: [PRD](PRD.md) dice «por decidir»; hoy no hay medición |
+| 17 | Decidir si el sitio mide visitas y con qué | Mínimo | A | ❌ | Pendiente de Ariel: [PRD](PRD.md) dice «por decidir»; al 2026-10-27 no hay medición |
 | 18–23 | GA4, etiqueta, eventos, Realtime, tráfico interno, otros píxeles | Rec./Opc. | A/T | — | Sin medición mientras Ariel no decida #17 |
 
 ## 4. Privacidad
@@ -72,14 +78,14 @@ Evidencia `O`: resultados que corrió el orquestador sobre 817824d el 2026-10-27
 | 33 | Formulario probado de punta a punta | Mínimo | T | — | Sin formularios |
 | 34 | El correo del envío llega | Mínimo | A | — | Sin formularios |
 | 35 | Enlaces de WhatsApp, teléfono y correo | Mínimo | T | — | Sin esos enlaces (el correo de contacto está por decidir) |
-| 36 | Sin textos de prueba ni enlaces rotos | Mínimo | T/O | ✅ | `lychee --offline --root-dir dist` (sobre 817824d): 25 OK, 0 errores. En línea: elari.work, elari.work/cv/ y github.com/mrKanoh OK; `https://mrkanoh.github.io/sitemap.xml` da 404 porque el sitio Astro aún no está publicado. Etapa 6: el marcador «[POR DECIDIR]» ya no está (`grep -c` en `dist/index.html` = 0) y el enlace nuevo https://github.com/mrKanoh/wcag-accessibility-audit-skill responde 200 (`curl`); lychee no se volvió a correr |
+| 36 | Sin textos de prueba ni enlaces rotos | Mínimo | T/O | ✅ | `lychee` en línea con `--root-dir` (sobre 8ff0695): 38 OK y 1 error esperado, `https://mrkanoh.github.io/sitemap.xml` 404 porque el sitio Astro aún no está publicado (`dist/sitemap.xml` existe). Sin el marcador «[POR DECIDIR]» (0 en `dist/index.html`) |
 | 37 | Protección contra spam | Recomendado | T | — | Sin formularios |
 | 38 | SPF, DKIM y DMARC | Recomendado | A | — | El dominio no envía correo |
 
 ## 8. Seguridad
 | # | Control | Nivel | Quién | Marca | Evidencia |
 |---|---|---|---|---|---|
-| 39 | Sin secretos (`gitleaks`) | Mínimo | T | ✅ | `gitleaks` sobre main..HEAD: 4 commits, no leaks; además en cada commit de etapa |
+| 39 | Sin secretos (`gitleaks`) | Mínimo | T | ✅ | `gitleaks` sobre main..8ff0695: 7 commits, no leaks; además `--staged` antes de cada commit |
 | 40 | Dependencias sin vulnerabilidades altas | Recomendado | T | ✅ | `npm audit`: 0 vulnerabilities |
 | 41 | Cabeceras de seguridad HTTP | Recomendado | T | — | GitHub Pages no permite cabeceras propias |
 
