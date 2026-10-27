@@ -26,6 +26,10 @@ No se usa elari.work (ni un subdominio suyo) como dominio de este sitio, salvo o
 
 Solo `wcag-accessibility-audit-skill` (https://github.com/mrKanoh/wcag-accessibility-audit-skill, Python), el único repo público de la cuenta aparte de este (`gh repo list mrKanoh --visibility public`). Palabras de Ariel: «solo tengo y quiero mostrar ese repo publico». La descripción en español traduce la de GitHub sin agregar nada.
 
+## 2026-10-27 — Sin medición por ahora (Ariel)
+
+El sitio no mide visitas: sin analítica, etiquetas ni cookies. Sus palabras: «El sitio no mide visitas por ahora.» Si cambia, se decide herramienta y se revisan consentimiento y privacidad (controles #18 a #25 de [docs/PUBLICACION-CHECKLIST.md](docs/PUBLICACION-CHECKLIST.md)).
+
 ## 2026-10-27 — Textos de la portada aprobados (Ariel)
 
 Ariel aprobó sin cambios la frase de presentación («Aquí están mis proyectos de código en GitHub. Los casos UX/UI y el CV están en elari.work.») y la meta descripción de la portada («Proyectos de código de Ariel Mesina Ramírez, Full Stack Developer con foco en Frontend. Portafolio UX/UI y CV en elari.work.»). Sus palabras: «Apruebo los dos textos de la portada tal como están.»

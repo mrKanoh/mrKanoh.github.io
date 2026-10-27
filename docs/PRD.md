@@ -25,7 +25,7 @@ Portada de la cuenta GitHub de Ariel Mesina Ramírez (`mrKanoh`) que muestra sus
 - Repetir los casos de elari.work (evita contenido duplicado; se enlazan).
 - Backend.
 - Formularios.
-- Medición (por decidir).
+- Medición (decidido 2026-10-27: sin medición por ahora).
 - Dominio propio.
 
 ## Criterio de éxito
@@ -44,7 +44,7 @@ Portada de la cuenta GitHub de Ariel Mesina Ramírez (`mrKanoh`) que muestra sus
 ## Por decidir (de Ariel)
 
 - Qué repos se muestran y si se publican más repos.
-- Medición: sí o no (y cuál).
+- ~~Medición: sí o no (y cuál).~~ Decidido el 2026-10-27: sin medición por ahora (ver [DECISIONS.md](../DECISIONS.md)).
 - Dominio propio: sí o no, y su efecto de herencia sobre los sitios de proyecto.
 - Correo de contacto `hola@elari.work` (se resuelve al final).
 - Versión en inglés: sí o no.

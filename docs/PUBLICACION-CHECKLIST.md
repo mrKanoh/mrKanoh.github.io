@@ -5,8 +5,8 @@ Marcas: ✅ cumple · ⚠️ parcial · ❌ falta · — no aplica · ? no verif
 
 ## Resumen
 
-- **Mínimos pendientes: 4** — #9, #10, #17 y #42.
-- **De Ariel (3):** #9 y #10 (Google Search Console) y #17 (decidir medición).
+- **Mínimos pendientes: 3** — #9, #10 y #42.
+- **De Ariel (2):** #9 y #10 (Google Search Console, tras publicar).
 - **Del equipo (1):** #42, recorrido en producción después de publicar.
 - **Bloqueos de contenido** (fuera de la tabla, de Ariel; el sitio no se publica sin resolverlos):
   1. ~~Lista de repositorios~~ Resuelto el 2026-10-27: Ariel decidió mostrar solo `wcag-accessibility-audit-skill` (ver [DECISIONS](../DECISIONS.md)).
@@ -48,8 +48,8 @@ Evidencia `O`: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27
 ## 3. Medición
 | # | Control | Nivel | Quién | Marca | Evidencia |
 |---|---|---|---|---|---|
-| 17 | Decidir si el sitio mide visitas y con qué | Mínimo | A | ❌ | Pendiente de Ariel: [PRD](PRD.md) dice «por decidir»; al 2026-10-27 no hay medición |
-| 18–23 | GA4, etiqueta, eventos, Realtime, tráfico interno, otros píxeles | Rec./Opc. | A/T | — | Sin medición mientras Ariel no decida #17 |
+| 17 | Decidir si el sitio mide visitas y con qué | Mínimo | A | ✅ | Decidido: sin medición por ahora. Ariel, 2026-10-27: «El sitio no mide visitas por ahora.» (ver [DECISIONS](../DECISIONS.md)) |
+| 18–23 | GA4, etiqueta, eventos, Realtime, tráfico interno, otros píxeles | Rec./Opc. | A/T | — | Sin medición (#17) |
 
 ## 4. Privacidad
 | # | Control | Nivel | Quién | Marca | Evidencia |
