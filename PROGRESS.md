@@ -1,13 +1,14 @@
 # Progreso
 
 ## Trabajo actual: GHP-SITIO-1 Sitio Astro + workflow de GitHub Pages  (rama tarea/ghp-sitio-1)
-- Etapas: [x] 1 base del proyecto Astro (commit 00c246b) · [x] 2 páginas, identidad y SEO (commit b5f080d) · [x] 3 workflow de GitHub Pages (commit ce98a9c) · [x] 4 documentación y correcciones de auditoría (commit de esta etapa)
-- Ciclo: etapas aprobadas 3, auditoría pendiente (de cierre), rondas 0
+- Etapas: [x] 1 base del proyecto Astro (commit 00c246b) · [x] 2 páginas, identidad y SEO (commit b5f080d) · [x] 3 workflow de GitHub Pages (commit ce98a9c) · [x] 4 documentación y correcciones de auditoría (commit 817824d) · [x] 5 correcciones de auditoría de cierre (commit de esta etapa)
+- Ciclo: etapas aprobadas 4, auditoría hecha (1.ª pasada de cierre), rondas 1
 - Línea base de pruebas: no hay pruebas automáticas. Verificación = `npm run check`, `npm run build` y revisión manual con evidencia. Al empezar (main = origin/main = adc2a84) no había código del sitio.
 - Estado del repo: remoto `origin` = https://github.com/mrKanoh/mrKanoh.github.io (público); PR 1 (`tarea/base-inicial`) fusionado en `main` (adc2a84). Etiqueta local `antes-de-ghp-sitio-1` sobre adc2a84. `tarea/base-minima` sigue local como respaldo.
 - Estado de Pages (auditoría etapa 3, 2026-10-27): ya publica `main` con Jekyll («Deploy from a branch», `/`; API `build_type` legacy). Decisión de Ariel (opción A): no se toca GitHub ahora.
 - Pendiente / bloqueos:
-  - Ariel: cambiar la fuente de Pages a «GitHub Actions» antes de fusionar (si no, doble despliegue con Jekyll).
+  - Ariel: cambiar la fuente de Pages a «GitHub Actions» antes de fusionar (con «Deploy from a branch», GitHub no documenta qué pasa con el workflow: puede fallar o convivir con el build de Jekyll).
+  - Tras la fusión: actualizar README «Estado» y AGENTS «Publicación», que describen el estado al 2026-10-27.
   - Ariel: qué repos se muestran (`src/data/repos.ts` vacío; la portada muestra el marcador «[POR DECIDIR]» y no se publica así).
   - Ariel: aprobar los textos nuevos de la portada (frase de presentación y meta descripción); los consulta el orquestador al cierre.
   - Orquestador: auditoría de cierre (build limpio, lychee, gitleaks, npm audit, Lighthouse); push y PR solo por su orden.

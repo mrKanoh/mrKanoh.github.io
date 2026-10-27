@@ -24,4 +24,4 @@ No se usa elari.work (ni un subdominio suyo) como dominio de este sitio, salvo o
 
 ## 2026-10-27 — Cambio de fuente de Pages antes de fusionar (Ariel, opción A)
 
-Contexto: la auditoría de la etapa 3 de GHP-SITIO-1 encontró que Pages ya estaba activo en «Deploy from a branch» (Jekyll, `main`, `/`), publicando el README y los `.md` del repo. Decisión: no se toca nada en GitHub durante GHP-SITIO-1. Ariel cambia Settings → Pages → Source a «GitHub Actions» justo antes de fusionar, para que no haya dos despliegues compitiendo.
+Contexto: la auditoría de la etapa 3 de GHP-SITIO-1 encontró que Pages ya estaba activo en «Deploy from a branch» (Jekyll, `main`, `/`), publicando el README y los `.md` del repo. Decisión: no se toca nada en GitHub durante GHP-SITIO-1. Ariel cambia Settings → Pages → Source a «GitHub Actions» justo antes de fusionar. Motivo: con la fuente en «Deploy from a branch», GitHub no documenta qué pasa con un workflow de Pages; puede fallar o convivir con el build de Jekyll.

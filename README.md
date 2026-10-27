@@ -12,8 +12,8 @@ Astro (sitio estático) publicado con GitHub Actions. Motivos y versiones en [DE
 
 ## Estado
 
-- El sitio Astro (portada, 404, robots.txt, sitemap.xml) y el workflow `.github/workflows/deploy.yml` están en la rama `tarea/ghp-sitio-1`, sin fusionar.
-- **Hoy GitHub Pages ya publica `main` con Jekyll** (fuente «Deploy from a branch», rama `main`, carpeta `/`): https://mrkanoh.github.io muestra este README y también sirve los demás `.md` del repositorio.
+- Al 2026-10-27, el sitio Astro (portada, 404, robots.txt, sitemap.xml) y el workflow `.github/workflows/deploy.yml` están en la rama `tarea/ghp-sitio-1`, sin fusionar.
+- **Al 2026-10-27, GitHub Pages publica `main` con Jekyll** (fuente «Deploy from a branch», rama `main`, carpeta `/`): https://mrkanoh.github.io muestra este README y también sirve los demás `.md` del repositorio.
 - **Lista de repositorios pendiente:** `src/data/repos.ts` está vacío y la portada muestra el marcador «[POR DECIDIR] Lista de repositorios pendiente de Ariel». Ariel decide qué repos se muestran; el sitio no se publica con el marcador.
 - El estado del trabajo vive en [PROGRESS.md](PROGRESS.md).
 
@@ -43,7 +43,7 @@ npm run build
 
 ## Cómo se publica
 
-1. **Antes de fusionar**, Ariel cambia Settings → Pages → Source de «Deploy from a branch» a **«GitHub Actions»**. Si no lo hace, cada push a `main` dispara dos despliegues que compiten: el de Jekyll y el de `deploy.yml`.
+1. **Antes de fusionar**, Ariel cambia Settings → Pages → Source de «Deploy from a branch» a **«GitHub Actions»**. Con la fuente en «Deploy from a branch», GitHub no documenta qué pasa con `deploy.yml`: puede fallar o convivir con el build de Jekyll. Por eso el cambio va antes de fusionar.
 2. Ariel fusiona a `main`. El push a `main` dispara `deploy.yml`: compila Astro (`npm ci`, `npm run build`) y publica `dist/` en el entorno `github-pages` con `actions/configure-pages`, `actions/upload-pages-artifact` y `actions/deploy-pages`.
 3. Cada push o fusión posterior a `main` publica en producción. Requiere autorización de Ariel. La publicación puede tardar unos minutos.
 

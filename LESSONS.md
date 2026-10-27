@@ -14,6 +14,6 @@
 
 ## 2026-10-27 — Orden basada en un estado de Pages que no se verificó
 
-- **Qué pasó:** la orden GHP-SITIO-1 asumió que Pages no estaba activado, sin verificarlo. GitHub ya publicaba `main` con Jekyll («Deploy from a branch», `/`), incluidos README, PROGRESS, AGENTS y docs/PRD. Fusionar sin cambiar la fuente habría dejado dos despliegues compitiendo. Lo detectó la auditoría de la etapa 3.
+- **Qué pasó:** la orden GHP-SITIO-1 asumió que Pages no estaba activado, sin verificarlo. GitHub ya publicaba `main` con Jekyll («Deploy from a branch», `/`), incluidos README, PROGRESS, AGENTS y docs/PRD. Fusionar sin cambiar la fuente dejaba un riesgo que GitHub no documenta: el workflow podía fallar o convivir con el build de Jekyll. Lo detectó la auditoría de la etapa 3.
 - **Causa:** el orquestador tomó el estado de una plataforma externa del texto de la solicitud, sin consultarlo.
 - **Prevención:** antes de redactar una orden que dependa de una plataforma, consultar su estado real y citarlo en la orden. Para Pages: `gh api repos/<owner>/<repo>/pages` (solo lectura; `build_type` dice `legacy` o `workflow`).
