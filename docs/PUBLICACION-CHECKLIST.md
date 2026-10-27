@@ -5,11 +5,11 @@ Marcas: ✅ cumple · ⚠️ parcial · ❌ falta · — no aplica · ? no verif
 
 ## Resumen
 
-- **Mínimos pendientes: 5** — #9, #10, #17, #36 y #42.
-- **De Ariel (4):** #9 y #10 (Google Search Console), #17 (decidir medición) y #36 (el marcador «[POR DECIDIR]» de la lista de repos se resuelve con su decisión).
+- **Mínimos pendientes: 4** — #9, #10, #17 y #42.
+- **De Ariel (3):** #9 y #10 (Google Search Console) y #17 (decidir medición).
 - **Del equipo (1):** #42, recorrido en producción después de publicar.
 - **Bloqueos de contenido** (fuera de la tabla, de Ariel; el sitio no se publica sin resolverlos):
-  1. Lista de repositorios: `src/data/repos.ts` está vacío y la portada muestra «[POR DECIDIR] Lista de repositorios pendiente de Ariel».
+  1. ~~Lista de repositorios~~ Resuelto el 2026-10-27: Ariel decidió mostrar solo `wcag-accessibility-audit-skill` (ver [DECISIONS](../DECISIONS.md)).
   2. Aprobar los dos textos nuevos de la portada: la frase «Aquí están mis proyectos de código en GitHub. Los casos UX/UI y el CV están en elari.work.» y la meta descripción «Proyectos de código de Ariel Mesina Ramírez, Full Stack Developer con foco en Frontend. Portafolio UX/UI y CV en elari.work.».
 - **Antes de fusionar (Ariel):** cambiar Settings → Pages → Source de «Deploy from a branch» a «GitHub Actions» (ver [README](../README.md), «Cómo se publica»).
 
@@ -72,7 +72,7 @@ Evidencia `O`: resultados que corrió el orquestador sobre 817824d el 2026-10-27
 | 33 | Formulario probado de punta a punta | Mínimo | T | — | Sin formularios |
 | 34 | El correo del envío llega | Mínimo | A | — | Sin formularios |
 | 35 | Enlaces de WhatsApp, teléfono y correo | Mínimo | T | — | Sin esos enlaces (el correo de contacto está por decidir) |
-| 36 | Sin textos de prueba ni enlaces rotos | Mínimo | T/O | ⚠️ | `lychee --offline --root-dir dist`: 25 OK, 0 errores. En línea: elari.work, elari.work/cv/ y github.com/mrKanoh OK; `https://mrkanoh.github.io/sitemap.xml` da 404 porque el sitio Astro aún no está publicado. Queda el marcador «[POR DECIDIR]» de la lista de repos |
+| 36 | Sin textos de prueba ni enlaces rotos | Mínimo | T/O | ✅ | `lychee --offline --root-dir dist` (sobre 817824d): 25 OK, 0 errores. En línea: elari.work, elari.work/cv/ y github.com/mrKanoh OK; `https://mrkanoh.github.io/sitemap.xml` da 404 porque el sitio Astro aún no está publicado. Etapa 6: el marcador «[POR DECIDIR]» ya no está (`grep -c` en `dist/index.html` = 0) y el enlace nuevo https://github.com/mrKanoh/wcag-accessibility-audit-skill responde 200 (`curl`); lychee no se volvió a correr |
 | 37 | Protección contra spam | Recomendado | T | — | Sin formularios |
 | 38 | SPF, DKIM y DMARC | Recomendado | A | — | El dominio no envía correo |
 

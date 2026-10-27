@@ -22,6 +22,10 @@ No se usa elari.work (ni un subdominio suyo) como dominio de este sitio, salvo o
 - **Node 24 en CI:** cumple `engines` (>=22.23.4), coincide con el Node local (v24) y es el que usa por defecto la acción de Astro (https://docs.astro.build/en/guides/deploy/github/).
 - **Sitio de usuario sin `base`:** el repo se llama `mrKanoh.github.io`, así que el sitio vive en la raíz (`site: 'https://mrkanoh.github.io'`).
 
+## 2026-10-27 — Repositorios que muestra la portada (Ariel)
+
+Solo `wcag-accessibility-audit-skill` (https://github.com/mrKanoh/wcag-accessibility-audit-skill, Python), el único repo público de la cuenta aparte de este (`gh repo list mrKanoh --visibility public`). Palabras de Ariel: «solo tengo y quiero mostrar ese repo publico». La descripción en español traduce la de GitHub sin agregar nada.
+
 ## 2026-10-27 — Cambio de fuente de Pages antes de fusionar (Ariel, opción A)
 
 Contexto: la auditoría de la etapa 3 de GHP-SITIO-1 encontró que Pages ya estaba activo en «Deploy from a branch» (Jekyll, `main`, `/`), publicando el README y los `.md` del repo. Decisión: no se toca nada en GitHub durante GHP-SITIO-1. Ariel cambia Settings → Pages → Source a «GitHub Actions» justo antes de fusionar. Motivo: con la fuente en «Deploy from a branch», GitHub no documenta qué pasa con un workflow de Pages; puede fallar o convivir con el build de Jekyll.

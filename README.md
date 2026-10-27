@@ -14,7 +14,8 @@ Astro (sitio estático) publicado con GitHub Actions. Motivos y versiones en [DE
 
 - Al 2026-10-27, el sitio Astro (portada, 404, robots.txt, sitemap.xml) y el workflow `.github/workflows/deploy.yml` están en la rama `tarea/ghp-sitio-1`, sin fusionar.
 - **Al 2026-10-27, GitHub Pages publica `main` con Jekyll** (fuente «Deploy from a branch», rama `main`, carpeta `/`): https://mrkanoh.github.io muestra este README y también sirve los demás `.md` del repositorio.
-- **Lista de repositorios pendiente:** `src/data/repos.ts` está vacío y la portada muestra el marcador «[POR DECIDIR] Lista de repositorios pendiente de Ariel». Ariel decide qué repos se muestran; el sitio no se publica con el marcador.
+- **Repositorios:** la lista de `src/data/repos.ts` la decide Ariel. Al 2026-10-27 muestra solo `wcag-accessibility-audit-skill`. Si la lista queda vacía, la portada muestra un marcador «[POR DECIDIR]» y el sitio no se publica así.
+- **Pendiente de Ariel:** aprobar los dos textos nuevos de la portada (frase de presentación y meta descripción).
 - El estado del trabajo vive en [PROGRESS.md](PROGRESS.md).
 
 ## Correr en local
