@@ -10,7 +10,7 @@ Marcas: ✅ cumple · ⚠️ parcial · ❌ falta · — no aplica · ? no verif
 - **Del equipo (1):** #42, recorrido en producción después de publicar.
 - **Bloqueos de contenido** (fuera de la tabla, de Ariel; el sitio no se publica sin resolverlos):
   1. ~~Lista de repositorios~~ Resuelto el 2026-10-27: Ariel decidió mostrar solo `wcag-accessibility-audit-skill` (ver [DECISIONS](../DECISIONS.md)).
-  2. Aprobar los dos textos nuevos de la portada: la frase «Aquí están mis proyectos de código en GitHub. Los casos UX/UI y el CV están en elari.work.» y la meta descripción «Proyectos de código de Ariel Mesina Ramírez, Full Stack Developer con foco en Frontend. Portafolio UX/UI y CV en elari.work.».
+  2. ~~Aprobar los dos textos nuevos de la portada~~ Resuelto el 2026-10-27: Ariel escribió «Apruebo los dos textos de la portada tal como están.» Los textos son la frase «Aquí están mis proyectos de código en GitHub. Los casos UX/UI y el CV están en elari.work.» y la meta descripción «Proyectos de código de Ariel Mesina Ramírez, Full Stack Developer con foco en Frontend. Portafolio UX/UI y CV en elari.work.».
 - **Antes de fusionar (Ariel):** cambiar Settings → Pages → Source de «Deploy from a branch» a «GitHub Actions» (ver [README](../README.md), «Cómo se publica»).
 
 Evidencia `O`: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27:
