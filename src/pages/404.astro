@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Página no encontrada | AMR" description="La dirección que buscas no existe en este sitio." noindex>
+  <section class="amr-wrap nf" aria-labelledby="nf-titulo">
+    <p class="amr-label">Error 404</p>
+    <h1 class="nf__title" id="nf-titulo">Esta página no se encuentra.</h1>
+    <p class="nf__text">La dirección puede estar mal escrita o la página ya no está disponible.</p>
+    <a class="nf__link" href="/">Volver al inicio</a>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--amr-space-16);
+    padding-block: var(--amr-space-64);
+  }
+  .nf__title { font: 500 32px/40px var(--amr-font-body); }
+  .nf__text { max-width: 40em; color: var(--amr-color-muted); }
+  .nf__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--amr-size-touch);
+    padding: 0 var(--amr-space-24);
+    border-radius: var(--amr-radius-4);
+    background: var(--amr-color-ink);
+    color: var(--amr-color-on-ink);
+    font: 500 14px/20px var(--amr-font-body);
+    text-decoration: none;
+  }
+  .nf__link:hover { background: var(--amr-color-muted); }
+</style>
