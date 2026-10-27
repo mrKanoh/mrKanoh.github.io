@@ -20,9 +20,8 @@ Sitio estático (Astro + GitHub Pages) en https://mrkanoh.github.io. Descripció
 
 ## Publicación
 
-- **Al 2026-10-27:** GitHub Pages publica `main` con Jekyll (fuente «Deploy from a branch», rama `main`, carpeta `/`), y el sitio Astro y `.github/workflows/deploy.yml` están en `tarea/ghp-sitio-1`, sin fusionar.
-- Antes de fusionar el sitio Astro, Ariel cambia Settings → Pages → Source a «GitHub Actions». Con la fuente en «Deploy from a branch», GitHub no documenta qué pasa con `deploy.yml`: puede fallar o convivir con el build de Jekyll.
-- Con la fuente en «GitHub Actions», cada push o fusión a `main` dispara `deploy.yml` y **publica en producción**. Requiere autorización expresa de Ariel.
+- **Al 2026-10-27:** la fuente de GitHub Pages es «GitHub Actions» (API: `build_type` workflow). El sitio Astro está publicado desde `main` por `.github/workflows/deploy.yml` (fusión dacd26c, run 40601772301 en success). Jekyll ya no está en uso.
+- Cada push o fusión a `main` dispara `deploy.yml` y **publica en producción**. Requiere autorización expresa de Ariel.
 - Prohibido ejecutar `workflow_dispatch` (o `gh workflow run`) sin orden expresa: también publica en producción.
 - Antes de una orden que dependa del estado de Pages, consultarlo (solo lectura): `gh api repos/mrKanoh/mrKanoh.github.io/pages`.
 
