@@ -1,19 +1,25 @@
 # Lista de publicación — mrkanoh.github.io
 
-Fecha: 2026-10-27. Orden: GHP-SITIO-1 (rama `tarea/ghp-sitio-1`). Plantilla: `D:\Proyectos\Creador\templates\checklist-web.md`.
+Fecha: 2026-10-27. Órdenes: GHP-SITIO-1 (PR 2, fusionado en dacd26c) y GHP-SITIO-1-POST (verificación en producción). Plantilla: `D:\Proyectos\Creador\templates\checklist-web.md`.
 Marcas: ✅ cumple · ⚠️ parcial · ❌ falta · — no aplica · ? no verificado.
 
 ## Resumen
 
-- **Mínimos pendientes: 3** — #9, #10 y #42.
-- **De Ariel (2):** #9 y #10 (Google Search Console, tras publicar).
-- **Del equipo (1):** #42, recorrido en producción después de publicar.
+- **Mínimos pendientes: 2** — #9 y #10, ambos de Ariel (Google Search Console: verificar la propiedad y enviar el sitemap).
 - **Bloqueos de contenido** (fuera de la tabla, de Ariel; el sitio no se publica sin resolverlos):
   1. ~~Lista de repositorios~~ Resuelto el 2026-10-27: Ariel decidió mostrar solo `wcag-accessibility-audit-skill` (ver [DECISIONS](../DECISIONS.md)).
   2. ~~Aprobar los dos textos nuevos de la portada~~ Resuelto el 2026-10-27: Ariel escribió «Apruebo los dos textos de la portada tal como están.» Los textos son la frase «Aquí están mis proyectos de código en GitHub. Los casos UX/UI y el CV están en elari.work.» y la meta descripción «Proyectos de código de Ariel Mesina Ramírez, Full Stack Developer con foco en Frontend. Portafolio UX/UI y CV en elari.work.».
-- **Antes de fusionar (Ariel):** cambiar Settings → Pages → Source de «Deploy from a branch» a «GitHub Actions» (ver [README](../README.md), «Cómo se publica»).
+- **Fuente de Pages:** Ariel la cambió a «GitHub Actions» antes de fusionar; la API responde `build_type` workflow y `status` built (2026-10-27).
 
-Evidencia `O`: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27:
+Evidencia en producción (orquestador, 2026-10-27, tras la fusión del PR 2 en dacd26c):
+- Run 40601772301 «Deploy to GitHub Pages»: success (build y deploy); no hubo una ejecución de Jekyll en paralelo.
+- Responden 200: `/` (título «Ariel Mesina Ramírez | Full Stack Developer con foco en Frontend», canónica `https://mrkanoh.github.io/`, tarjeta `wcag-accessibility-audit-skill`), `/robots.txt` (declara el sitemap), `/sitemap.xml`, `/share/amr-compartir-1200x630.png` y `/favicon.svg`.
+- `/no-existe` da 404 con «Página no encontrada | AMR» y `noindex`.
+- `http://` redirige con 301 a `https://`.
+- `/PROGRESS.md`, `/AGENTS.md` y `/docs/PRD.md` dan 404 (ya no se exponen).
+- `lychee` sobre la portada en producción: 21 OK, 0 errores.
+
+Evidencia `O` previa a la fusión: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27:
 - `npm run check`: 0 errores, 0 warnings, 0 hints.
 - `npm run build` desde `dist` limpio: 2 páginas; `dist/index.html` con la tarjeta del repo y 0 «POR DECIDIR».
 - `lychee` en línea con `--root-dir`: 38 OK y 1 error esperado (`https://mrkanoh.github.io/sitemap.xml` da 404 porque el sitio Astro aún no está publicado; `dist/sitemap.xml` existe).
@@ -24,7 +30,7 @@ Evidencia `O`: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27
 ## 1. Dominio y publicación
 | # | Control | Nivel | Quién | Marca | Evidencia |
 |---|---|---|---|---|---|
-| 1 | HTTPS en todo el sitio, con redirección desde http | Mínimo | T/A | ✅ | API de Pages (solo lectura, orquestador): `https_enforced: true` |
+| 1 | HTTPS en todo el sitio, con redirección desde http | Mínimo | T/A | ✅ | API de Pages (solo lectura, orquestador): `https_enforced: true`; en producción `http://` redirige con 301 a `https://` (2026-10-27) |
 | 2 | Una sola versión del dominio y 301 de la otra | Mínimo | A | — | Dominio `mrkanoh.github.io`: sin www ni dominio propio |
 | 3 | DNS sin registros viejos; correo intacto | Mínimo | A | — | Sin DNS propio (dominio de GitHub) |
 | 4 | Página 404 propia, sin datos internos | Mínimo | T | ✅ | `src/pages/404.astro`; `/no-existe` responde 404 con esa página, `noindex` (revisión etapa 2) |
@@ -78,7 +84,7 @@ Evidencia `O`: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27
 | 33 | Formulario probado de punta a punta | Mínimo | T | — | Sin formularios |
 | 34 | El correo del envío llega | Mínimo | A | — | Sin formularios |
 | 35 | Enlaces de WhatsApp, teléfono y correo | Mínimo | T | — | Sin esos enlaces (el correo de contacto está por decidir) |
-| 36 | Sin textos de prueba ni enlaces rotos | Mínimo | T/O | ✅ | `lychee` en línea con `--root-dir` (sobre 8ff0695): 38 OK y 1 error esperado, `https://mrkanoh.github.io/sitemap.xml` 404 porque el sitio Astro aún no está publicado (`dist/sitemap.xml` existe). Sin el marcador «[POR DECIDIR]» (0 en `dist/index.html`) |
+| 36 | Sin textos de prueba ni enlaces rotos | Mínimo | T/O | ✅ | `lychee` sobre la portada en producción (2026-10-27): 21 OK, 0 errores. Antes de publicar (sobre 8ff0695): 38 OK y solo el 404 esperado de `/sitemap.xml`, que ya responde 200. Sin el marcador «[POR DECIDIR]» |
 | 37 | Protección contra spam | Recomendado | T | — | Sin formularios |
 | 38 | SPF, DKIM y DMARC | Recomendado | A | — | El dominio no envía correo |
 
@@ -92,7 +98,7 @@ Evidencia `O`: resultados que corrió el orquestador sobre 8ff0695 el 2026-10-27
 ## 9. Después de publicar
 | # | Control | Nivel | Quién | Marca | Evidencia |
 |---|---|---|---|---|---|
-| 42 | Recorrido en producción de lo crítico | Mínimo | T | ❌ | Pendiente tras publicar: portada, 404, robots.txt, sitemap.xml e imagen para compartir |
+| 42 | Recorrido en producción de lo crítico | Mínimo | T | ✅ | Orquestador, 2026-10-27: portada, robots.txt, sitemap.xml, imagen para compartir y favicon responden 200; `/no-existe` da 404 con la página propia y `noindex`; redirección 301 http→https; run 40601772301 en success (ver «Evidencia en producción» arriba) |
 | 43 | Aviso si el sitio se cae | Recomendado | A | ❌ | Recomendado, de Ariel |
 | 44 | Alertas de vencimiento de dominio y certificado | Recomendado | A | ❌ | Recomendado, de Ariel (el dominio y el certificado los gestiona GitHub) |
 | 45 | Accesos del dueño a todas las cuentas | Recomendado | A | ❌ | Recomendado, de Ariel |

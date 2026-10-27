@@ -12,8 +12,8 @@ Astro (sitio estático) publicado con GitHub Actions. Motivos y versiones en [DE
 
 ## Estado
 
-- Al 2026-10-27, el sitio Astro (portada, 404, robots.txt, sitemap.xml) y el workflow `.github/workflows/deploy.yml` están en la rama `tarea/ghp-sitio-1`, sin fusionar.
-- **Al 2026-10-27, GitHub Pages publica `main` con Jekyll** (fuente «Deploy from a branch», rama `main`, carpeta `/`): https://mrkanoh.github.io muestra este README y también sirve los demás `.md` del repositorio.
+- **Al 2026-10-27, el sitio Astro está publicado** en https://mrkanoh.github.io: portada, 404, robots.txt y sitemap.xml. Lo publica `.github/workflows/deploy.yml` desde `main` (fusión del PR 2, dacd26c; run 40601772301 en success).
+- La fuente de GitHub Pages es «GitHub Actions». Jekyll ya no está en uso: los `.md` del repositorio ya no se sirven.
 - **Repositorios:** la lista de `src/data/repos.ts` la decide Ariel. Al 2026-10-27 muestra solo `wcag-accessibility-audit-skill`. Si la lista queda vacía, la portada muestra un marcador «[POR DECIDIR]» y el sitio no se publica así.
 - **Textos de la portada:** la frase de presentación y la meta descripción los aprobó Ariel el 2026-10-27.
 - El estado del trabajo vive en [PROGRESS.md](PROGRESS.md).
@@ -44,11 +44,12 @@ npm run build
 
 ## Cómo se publica
 
-1. **Antes de fusionar**, Ariel cambia Settings → Pages → Source de «Deploy from a branch» a **«GitHub Actions»**. Con la fuente en «Deploy from a branch», GitHub no documenta qué pasa con `deploy.yml`: puede fallar o convivir con el build de Jekyll. Por eso el cambio va antes de fusionar.
-2. Ariel fusiona a `main`. El push a `main` dispara `deploy.yml`: compila Astro (`npm ci`, `npm run build`) y publica `dist/` en el entorno `github-pages` con `actions/configure-pages`, `actions/upload-pages-artifact` y `actions/deploy-pages`.
-3. Cada push o fusión posterior a `main` publica en producción. Requiere autorización de Ariel. La publicación puede tardar unos minutos.
+La fuente de GitHub Pages es «GitHub Actions» (Settings → Pages → Source).
+
+1. Ariel fusiona a `main`. El push a `main` dispara `deploy.yml`: compila Astro (`npm ci`, `npm run build`) y publica `dist/` en el entorno `github-pages` con `actions/configure-pages`, `actions/upload-pages-artifact` y `actions/deploy-pages`.
+2. Cada push o fusión a `main` publica en producción. Requiere autorización de Ariel. La publicación puede tardar unos minutos.
 
 ## Cómo volver atrás
 
 - **Volver a una versión anterior del sitio:** revertir en `main` el commit de fusión (`git revert -m 1 <merge>`) y subirlo; el workflow vuelve a publicar la versión anterior. También se puede re-ejecutar desde la pestaña Actions el run de un despliegue anterior.
-- **Volver al sitio Jekyll de antes:** cambiar Settings → Pages → Source de nuevo a «Deploy from a branch» (rama `main`, carpeta `/`). Si `main` ya tiene el sitio Astro, además hay que revertir la fusión, porque Jekyll publicaría el repositorio tal como esté.
+- **Volver al sitio Jekyll de antes (solo el README):** cambiar Settings → Pages → Source de nuevo a «Deploy from a branch» (rama `main`, carpeta `/`) y revertir la fusión del PR 2 (dacd26c), porque Jekyll publicaría el repositorio tal como esté.
