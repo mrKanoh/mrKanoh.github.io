@@ -69,6 +69,10 @@
       "PowerShell(lychee *)",
       "PowerShell(actionlint *)"
     ],
+    "ask": [
+      "Bash(gh api *)",
+      "PowerShell(gh api *)"
+    ],
     "deny": [
       "Bash(git push)",
       "PowerShell(git push)",
@@ -103,7 +107,6 @@
       "Bash(git branch -D *)",
       "Bash(gh pr merge *)",
       "Bash(gh repo create *)",
-      "Bash(gh api * -X *)",
       "Bash(gh workflow run *)",
       "Bash(npx wrangler deploy *)",
       "Bash(wrangler deploy *)",
@@ -141,7 +144,6 @@
       "PowerShell(git branch -D *)",
       "PowerShell(gh pr merge *)",
       "PowerShell(gh repo create *)",
-      "PowerShell(gh api * -X *)",
       "PowerShell(gh workflow run *)",
       "PowerShell(npx wrangler deploy *)",
       "PowerShell(wrangler deploy *)",
